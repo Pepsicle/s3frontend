@@ -1,26 +1,5 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <hr />
-    <div>
-      <ul>
-        <li v-for="user in users" v-bind:key="user.firstname" >
-          {{user.firstname}} {{user.lastname}}
-        </li>
-      </ul>
-    </div>
-    <hr />
-    <div>
-      <input type="text" v-model="input_val">
-    </div>
-    <div>
-      Input Value: <span v-text="input_val"></span>
-    </div>
-    <hr />
-    <div>
-      <button class="btn btn-primary" v-on:click="counter++">You've clicked this button {{counter}} times!</button>
-    </div>
-    <br>
     <form>
       <div>
         <input type="text" v-model="playerInput">
@@ -36,6 +15,17 @@
     <p>{{ playerdata }}</p>
     <ul id="hello">
       <a v-for="god in gods" :key="god.godName">
+
+        <div class="col-md-12 border-primary godlist-container">
+          <a>{{ god.godName }}</a><br>
+          <div class="col-md-7">
+            <a>test</a>
+          </div>
+          <div class="col-md-5">
+            <a>test2</a>
+          </div>
+        </div>
+
         <a>{{ god.godName }}</a><br>
         <a>Rank: {{ god.rank }}</a><br>
         <a>Worshippers: {{ god.worshippers}}</a><br>
@@ -45,7 +35,40 @@
         <a>Deaths: {{ god.deaths}}</a><br>
         <a>Assists: {{ god.assists}}</a><br>
         <a>Minion Kills: {{ god.minionKills}}</a><br>
+        <a>Class: {{god.godClass }}</a><br>
+        <img :src="getImgUrl(god.godClass)">
         <br><br>
+
+
+        <div class="col-md-12 index-divider"></div>
+
+            <div class="col-md-12 index-god">
+                <div class="index-post-title">
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-7 index-post-image">
+                        <div></div>
+                        <img :src="getImgUrl(god.godClass)">
+                        <div></div>
+                    </div>
+                    <div class="col-md-3 index-post-upvotes">
+                        <p></p>
+                        <h><span id="txtHint"></span></h>
+                        <br>
+                        <div class="col-md-12 index-post-commentbox">
+                            <p>Most recent comment:</p>
+                            <div class="col-md-12 index-post-comment">
+                                <h1><a href='userpage.php?name=".$comment->commentuser."'></a></h1>
+                                <h2></h2>
+                            </div>
+                        </div><br>
+                        <a href="postpage.php?id=<?php echo $post->postid;?>">View post</a>
+                    </div>
+                </div>
+            </div>
+
+
       </a>
     </ul>
     <p>{{ playerWorshipers }}</p>
@@ -58,15 +81,6 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      users: [
-        {firstname: 'Sebastian', lastname: 'Eschweiler'},
-        {firstname: 'Bill', lastname: 'Smith'},
-        {firstname: 'John', lastname: 'Porter'}
-      ],
-      input_val: '',
-      counter: 0,
-      posts: [],
       name: 'App',
       playerdata: '',
       playerInput: '',
@@ -109,6 +123,10 @@ export default {
         console.log("error")
         console.log(error)
       }
+    },
+    getImgUrl(godClass) {
+      var images = require.context('../assets/ClassIcons', false, /\.png$/)
+      return images('./' + godClass + ".png")
     }
   }
 }
@@ -116,7 +134,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
+/* h3 {
   margin: 40px 0 0;
 }
 ul {
@@ -126,7 +144,7 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
+} */
 a {
   color: #000000;
 }

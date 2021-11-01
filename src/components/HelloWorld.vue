@@ -16,13 +16,20 @@
     <ul id="hello">
       <a v-for="god in gods" :key="god.godName">
 
-        <div class="col-md-12 border-primary godlist-container">
+        <div class="col-md-12 godlist-container">
           <a>{{ god.godName }}</a><br>
-          <div class="col-md-7">
-            <a>test</a>
-          </div>
-          <div class="col-md-5">
-            <a>test2</a>
+          <div class="container">
+            <div class="row col-md-12">
+              <div class="col-md-7">
+                <a>test</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <a>test</a>
+              </div>
+            </div>
+
           </div>
         </div>
 

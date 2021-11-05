@@ -15,70 +15,58 @@
     <p>{{ playerdata }}</p>
     <ul id="hello">
       <a v-for="god in gods" :key="god.godName">
+        <!-- <div class="row"> -->
+          <div class="col-md-1"></div>
 
-        <div class="col-md-12 godlist-container">
-          <a>{{ god.godName }}</a><br>
-          <div class="container">
-            <div class="row col-md-12">
-              <div class="col-md-7">
-                <a>test</a>
+          <div class="col-md-5 card">
+            <div class="card-header"> {{ god.godName }} </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <a>afgas</a>
+                </div>
+                <div class="col-md-4">
+                  <a>huirauibrauib</a>
+                </div>
               </div>
             </div>
+          </div>
+
+          <div class="col-md-5 godlist-container card">
+            <p class="godName">{{ god.godName }}</p>
+            <hr>
             <div class="row">
-              <div class="col-md-5">
-                <a>test</a>
+              <div class="col-md-10">
+                <div class="container col-md-12">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <a>Kills: {{ god.kills }}</a><br>
+                      <a>Deaths: {{ god.deaths }}</a><br>
+                      <a>Assists: {{ god.assists }}</a><br>
+                      <a>Minion Kills: {{ god.minionKills }}</a>
+                    </div>
+                    <div class="col-md-6">
+                      <a>Mastery rank: {{ god.rank }}</a><br>
+                      <a>Worshippers: {{ god.worshippers }}</a><br>
+                      <a>Wins: {{ god.wins }}</a><br>
+                      <a>Losses: {{ god.losses }}</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+              <div class="col-md-2">
+                <img :src="getImgUrl(god.godClass)" class="classImage"><br>
+                <a> {{ god.godClass }} </a>
               </div>
             </div>
 
           </div>
-        </div>
-
-        <a>{{ god.godName }}</a><br>
-        <a>Rank: {{ god.rank }}</a><br>
-        <a>Worshippers: {{ god.worshippers}}</a><br>
-        <a>Wins: {{ god.wins}}</a><br>
-        <a>Losses: {{ god.losses}}</a><br>
-        <a>Kills: {{ god.kills}}</a><br>
-        <a>Deaths: {{ god.deaths}}</a><br>
-        <a>Assists: {{ god.assists}}</a><br>
-        <a>Minion Kills: {{ god.minionKills}}</a><br>
-        <a>Class: {{god.godClass }}</a><br>
-        <img :src="getImgUrl(god.godClass)">
-        <br><br>
-
-
-        <div class="col-md-12 index-divider"></div>
-
-            <div class="col-md-12 index-god">
-                <div class="index-post-title">
-                    
-                </div>
-                <div class="row">
-                    <div class="col-md-7 index-post-image">
-                        <div></div>
-                        <img :src="getImgUrl(god.godClass)">
-                        <div></div>
-                    </div>
-                    <div class="col-md-3 index-post-upvotes">
-                        <p></p>
-                        <h><span id="txtHint"></span></h>
-                        <br>
-                        <div class="col-md-12 index-post-commentbox">
-                            <p>Most recent comment:</p>
-                            <div class="col-md-12 index-post-comment">
-                                <h1><a href='userpage.php?name=".$comment->commentuser."'></a></h1>
-                                <h2></h2>
-                            </div>
-                        </div><br>
-                        <a href="postpage.php?id=<?php echo $post->postid;?>">View post</a>
-                    </div>
-                </div>
-            </div>
-
-
+          <div class="col-md-1"></div>
+        <!-- </div> -->
+        <br>
       </a>
     </ul>
-    <p>{{ playerWorshipers }}</p>
+    <!-- <p>{{ playerWorshipers }}</p> -->
   </div>
 </template>
 
@@ -154,5 +142,8 @@ li {
 } */
 a {
   color: #000000;
+}
+img {
+  max-width: 90%;
 }
 </style>

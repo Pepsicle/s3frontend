@@ -16,7 +16,7 @@
     <ul id="hello">
       <div class="cardflex">
         <a v-for="god in gods" :key="god.godName">
-            <GodCard :god="god" />
+            <GodCard :god="god" :KDA="[god.kills, god.deaths, god.assists]" />
             <!-- <div class="col-md-12 card">
               <div class="card-header"> {{ god.godName }} 
               </div>

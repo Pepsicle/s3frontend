@@ -13,6 +13,7 @@
                                     <a>Deaths: {{ this.god.deaths }}</a><br>
                                     <a>Assists: {{ this.god.assists }}</a><br>
                                     <a>Minion Kills: {{ this.god.minionKills }}</a>
+                                    <RadarChart :chartName="this.god.godName" :chartdata="this.chartData" />
                                 </div>
                                 <div class="col-md-6">
                                     <a>Mastery rank: {{ this.god.rank }}</a><br>
@@ -26,7 +27,6 @@
                     <div class="col-md-3">
                         <img :src="getImgUrl(this.god.godClass)" class="classImage"><br>
                         <a> {{ this.god.godClass }} </a>
-                        <RadarChart />
                     </div>
                 </div>
             </div>
@@ -47,11 +47,39 @@ export default {
         god: {
             default: null
         },
+        KDA: {
+            type: Array,
+        }
     },
     methods: {
         getImgUrl(godClass) {
             var images = require.context('../assets/ClassIcons', false, /\.png$/)
             return images('./' + godClass + ".png")
+        },
+    },
+    mounted() {
+        console.log(this.god.kills)
+    },
+    computed: {
+        chartData() {
+            return {
+                labels: [
+                    'Kills',
+                    'Deaths',
+                    'Assists'
+                ],
+                datasets: [{
+                    label: "KDA",
+                    data: this.KDA,
+                    fill: true,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    pointBackgroundColor: 'rgb(255, 99, 132)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(255, 99, 132)'
+                }]
+            }
         }
     }
 }

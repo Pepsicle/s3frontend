@@ -22,21 +22,32 @@ export default {
   },
   props: {
     chartdata: {
-      default: null
+        default: null
     },
     options: {
       type: Object,
       default(){
         return {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero:true
-              }
-            }]
-          }
+            responsive: true,
+            maintainAspectRatio: false,
+            gridLines: {
+                display: false
+            },
+            scale: {
+                ticks: {
+                    maxTicksLimit: 1
+                }
+            },
+            scales: {
+                r: {
+                    angleLines: {
+                        display: false
+                    },
+                }
+            },
+            legend: {
+                display: false
+            },
         }
       }
     },

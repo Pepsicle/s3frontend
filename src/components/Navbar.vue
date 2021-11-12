@@ -48,6 +48,7 @@ li a:hover {
     max-height: 40px;
     margin: 5px;
     margin-left: 20px;
+    margin-top: 5px;
     vertical-align: middle;
 }
 </style>

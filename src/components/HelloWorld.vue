@@ -14,57 +14,85 @@
 
     <p>{{ playerdata }}</p>
     <ul id="hello">
-      <a v-for="god in gods" :key="god.godName">
-        <!-- <div class="row"> -->
-          <div class="col-md-1"></div>
+      <div class="cardflex">
+        <a v-for="god in gods" :key="god.godName">
+          <!-- <div class="row"> -->
 
-          <div class="col-md-5 card">
-            <div class="card-header"> {{ god.godName }} </div>
-            <div class="card-body">
+            <div class="col-md-12 card">
+              <div class="card-header"> {{ god.godName }} 
+                <!-- <ul class="nav nav-tabs card-header-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link active"> {{ this.playerInput }} </a>
+                  </li>
+                </ul> -->
+              </div>
+              <div class="card-body">
+  <!--               
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+    </ul> -->
+                <div class="row">
+                  <div class="col-md-9">
+                    <div class="container col-md-12">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <a>Kills: {{ god.kills }}</a><br>
+                          <a>Deaths: {{ god.deaths }}</a><br>
+                          <a>Assists: {{ god.assists }}</a><br>
+                          <a>Minion Kills: {{ god.minionKills }}</a>
+                        </div>
+                        <div class="col-md-6">
+                          <a>Mastery rank: {{ god.rank }}</a><br>
+                          <a>Worshippers: {{ god.worshippers }}</a><br>
+                          <a>Wins: {{ god.wins }}</a><br>
+                          <a>Losses: {{ god.losses }}</a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="col-md-3">
+                    <img :src="getImgUrl(god.godClass)" class="classImage"><br>
+                    <a> {{ god.godClass }} </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-md-5 godlist-container card">
+              <p class="godName">{{ god.godName }}</p>
+              <hr>
               <div class="row">
-                <div class="col-md-8">
-                  <a>afgas</a>
-                </div>
-                <div class="col-md-4">
-                  <a>huirauibrauib</a>
+                <div class="col-md-10">
+                  <div class="container col-md-12">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <a>Kills: {{ god.kills }}</a><br>
+                        <a>Deaths: {{ god.deaths }}</a><br>
+                        <a>Assists: {{ god.assists }}</a><br>
+                        <a>Minion Kills: {{ god.minionKills }}</a>
+                      </div>
+                      <div class="col-md-6">
+                        <a>Mastery rank: {{ god.rank }}</a><br>
+                        <a>Worshippers: {{ god.worshippers }}</a><br>
+                        <a>Wins: {{ god.wins }}</a><br>
+                        <a>Losses: {{ god.losses }}</a>
+                      </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+                <div class="col-md-2">
+                  <img :src="getImgUrl(god.godClass)" class="classImage"><br>
+                  <a> {{ god.godClass }} </a>
+                </div>
+              </div>
 
-          <div class="col-md-5 godlist-container card">
-            <p class="godName">{{ god.godName }}</p>
-            <hr>
-            <div class="row">
-              <div class="col-md-10">
-                <div class="container col-md-12">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <a>Kills: {{ god.kills }}</a><br>
-                      <a>Deaths: {{ god.deaths }}</a><br>
-                      <a>Assists: {{ god.assists }}</a><br>
-                      <a>Minion Kills: {{ god.minionKills }}</a>
-                    </div>
-                    <div class="col-md-6">
-                      <a>Mastery rank: {{ god.rank }}</a><br>
-                      <a>Worshippers: {{ god.worshippers }}</a><br>
-                      <a>Wins: {{ god.wins }}</a><br>
-                      <a>Losses: {{ god.losses }}</a>
-                    </div>
-                </div>
-              </div>
-            </div>
-              <div class="col-md-2">
-                <img :src="getImgUrl(god.godClass)" class="classImage"><br>
-                <a> {{ god.godClass }} </a>
-              </div>
-            </div>
-
-          </div>
-          <div class="col-md-1"></div>
-        <!-- </div> -->
-        <br>
-      </a>
+            </div> -->
+          <!-- </div> -->
+          <br>
+        </a>
+      </div>
     </ul>
     <!-- <p>{{ playerWorshipers }}</p> -->
   </div>
@@ -102,6 +130,7 @@ export default {
       }
     },
     async getWorshipers() {
+      window.location.href = 'https://localhost:8080/?#/';
       console.log("starting API call");
       try {
         console.log("calling API")
@@ -145,5 +174,11 @@ a {
 }
 img {
   max-width: 90%;
+}
+
+.cardflex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 </style>

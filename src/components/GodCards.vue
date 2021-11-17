@@ -13,7 +13,7 @@
                                     <a>Deaths: {{ this.god.deaths }}</a><br>
                                     <a>Assists: {{ this.god.assists }}</a><br>
                                     <a>Minion Kills: {{ this.god.minionKills }}</a>
-                                    <RadarChart :chartName="this.god.godName" :chartdata="this.chartData" />
+                                    <RadarChart :chartName="this.god.godName.replaceAll(' ', '-')" :chartdata="this.chartData" />
                                 </div>
                                 <div class="col-md-6">
                                     <a>Mastery rank: {{ this.god.rank }}</a><br>
@@ -72,12 +72,12 @@ export default {
                     label: "KDA",
                     data: this.KDA,
                     fill: true,
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    pointBackgroundColor: 'rgb(255, 99, 132)',
+                    backgroundColor: 'rgba(65, 87, 168, 0.2)',
+                    borderColor: 'rgb(65, 87, 168)',
+                    pointBackgroundColor: 'rgb(65, 87, 168)',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgb(255, 99, 132)'
+                    pointHoverBorderColor: 'rgb(65, 87, 168)'
                 }]
             }
         }

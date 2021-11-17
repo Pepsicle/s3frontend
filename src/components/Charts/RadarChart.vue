@@ -1,5 +1,5 @@
 <template>
-  <div  :class="chartName">
+  <div  :class="this.chartName">
     <canvas></canvas>
   </div>
 </template>

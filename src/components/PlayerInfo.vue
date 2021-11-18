@@ -20,13 +20,32 @@
     <div v-if="loaded" class="userJumbotron">
       <UserJumbotron :playerStats="user.playerStats" :userStatus="user.userStatus"></UserJumbotron>
     </div>
+
+    <div class="container col-md-10 offset-2">
+      <div v-if="loaded" class="sortMenu row">
+        <div class="searcher col">
+          <form>
+            <input type="text" v-model="searchTerm" @change="filterByTerm()" placeholder="Search God"/>
+          </form>
+        </div>
+        <div class="sorter col">Sort By: 
+          <select v-model="sortType" @change="sortGods">
+            <option value="godName">Name</option>
+            <option value="worshippers">Worshippers</option>
+            <option value="wins">Winrate</option>
+            <option value="godClass">Class</option>
+          </select>
+          <select v-model="sortDirection" @change="sortGods">
+            <option value="DESC">Descending</option>
+            <option value="ASC">Ascending</option>
+          </select>
+        </div>
+      </div>
+    </div>
     <div class="godcardscontainer">
       <ul id="Godcards">
-        <div>
-          <button v-if="loaded" class="btn btn-primary" v-on:click="sortArray">Sort By Name</button>
-        </div>
         <div class="cardflex">
-          <div class="godcard card-deck" v-for="god in gods" :key="god.godName">
+          <div class="godcard card-deck" v-for="god in filterByTerm" :key="god.godName">
             <GodCard :god="god" :KDA="[god.kills, god.deaths, god.assists]" />
           </div>
         </div>
@@ -53,6 +72,9 @@ export default {
       user: '',
       gods: [],
       loaded: false,
+      sortDirection: 'ASC',
+      sortType: 'worshippers',
+      searchTerm: '',
     }
   },
   methods: {
@@ -73,11 +95,33 @@ export default {
       var images = require.context('../assets/ClassIcons', false, /\.png$/)
       return images('./' + godClass + ".png")
     },
+    sortGods(){
+      this.gods.sort( function( a, b ){
+        if( this.sortDirection == 'ASC' ){
+          return ( ( a[this.sortType] == b[this.sortType] ) ? 0 : ( ( a[this.sortType] > b[this.sortType] ) ? 1 : -1 ) );
+        }
+
+        if( this.sortDirection == 'DESC' ){
+          return ( ( a[this.sortType] == b[this.sortType] ) ? 0 : ( ( a[this.sortType] < b[this.sortType] ) ? 1 : -1 ) );
+        }
+      }.bind(this));
+    },
+  },
+  computed: {
+    filterByTerm() {
+      return this.gods.filter(god => {
+        return god.godName.toLowerCase().includes(this.searchTerm.toLowerCase());
+      });
+    }
   }
 }
 </script>
 
 <style scoped>
+.Playerinfo {
+  overflow-x: hidden;
+}
+
 a {
   color: #000000;
 }
@@ -115,4 +159,17 @@ a {
 .searchOtherPlayer button {
   max-width: 200px;
 }
+
+.sorter {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.searcher {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
 </style>

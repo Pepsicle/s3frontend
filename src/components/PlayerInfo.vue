@@ -1,5 +1,12 @@
 <template>
   <div class="Playerinfo">
+    <div v-if="loaded" class="searchOtherPlayer">
+      <div class="">
+        <p>Search other player:</p>
+        <input type="text" v-model="playerInput" style="max-width-200px">
+        <button class="btn btn-primary" v-on:click="getUser">Search for User</button>
+      </div>
+    </div>
     <div v-if="!loaded" class="align-middle input_form">
       <h5>Enter playername here:</h5><br>
       <form>
@@ -16,7 +23,7 @@
     <div class="godcardscontainer">
       <ul id="Godcards">
         <div>
-          <button v-if="loaded" class="btn btn-primary" v-on:click="sortArray" disabled>Sort By Name</button>
+          <button v-if="loaded" class="btn btn-primary" v-on:click="sortArray">Sort By Name</button>
         </div>
         <div class="cardflex">
           <div class="godcard card-deck" v-for="god in gods" :key="god.godName">
@@ -65,7 +72,7 @@ export default {
     getImgUrl(godClass) {
       var images = require.context('../assets/ClassIcons', false, /\.png$/)
       return images('./' + godClass + ".png")
-    }
+    },
   }
 }
 </script>
@@ -92,5 +99,20 @@ a {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+.searchOtherPlayer {
+  position: absolute;
+  right: 5px;
+  margin-right: 2%;
+  margin-top: 1%;
+}
+
+.searchOtherPlayer input {
+  max-width: 200px;
+}
+
+.searchOtherPlayer button {
+  max-width: 200px;
 }
 </style>

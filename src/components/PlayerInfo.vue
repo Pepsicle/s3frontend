@@ -10,9 +10,6 @@
       </div>
     </div>
 
-
-    <!-- <p>{{ user.playerStats }}</p>
-    <p>{{ user.userStatus }}</p> -->
     <div v-if="loaded" class="userJumbotron">
       <UserJumbotron :playerStats="user.playerStats" :userStatus="user.userStatus"></UserJumbotron>
     </div>

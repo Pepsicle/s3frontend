@@ -85,8 +85,8 @@ export default {
             return KD.toFixed(2)
         },
         getWinrate() {
-            var totalWins = this.god.wins + this.god.losses
-            var winrate = this.god.wins/totalWins*100 
+            var totalGames = this.god.wins + this.god.losses
+            var winrate = (this.god.wins/totalGames)*100 
             return winrate.toFixed(2) + "%"
         },
         setWinratePercentages() {

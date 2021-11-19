@@ -32,7 +32,7 @@
           <select v-model="sortType" @change="sortGods">
             <option value="godName">Name</option>
             <option value="worshippers">Worshippers</option>
-            <option value="wins">Winrate</option>
+            <option value="wins" disabled>Winrate</option>
             <option value="godClass">Class</option>
           </select>
           <select v-model="sortDirection" @change="sortGods">
@@ -72,7 +72,7 @@ export default {
       user: '',
       gods: [],
       loaded: false,
-      sortDirection: 'ASC',
+      sortDirection: 'DESC',
       sortType: 'worshippers',
       searchTerm: '',
     }
@@ -171,5 +171,4 @@ a {
   align-items: center;
   justify-content: left;
 }
-
 </style>

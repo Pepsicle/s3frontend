@@ -18,7 +18,7 @@
     </div>
 
     <div v-if="loaded" class="userJumbotron">
-      <UserJumbotron :playerStats="user.playerStats" :userStatus="user.userStatus"></UserJumbotron>
+      <UserJumbotron :playerStats="user.playerStats" :userStatus="user.userStatus"/>
     </div>
 
     <div class="container col-md-10 offset-2">

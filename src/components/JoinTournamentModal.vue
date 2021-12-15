@@ -1,5 +1,6 @@
 <template>
-  <button type="button" class="btn btn-primary" @click="modal.show()">Sign up for {{modalTournament.tournamentDescription}}</button>
+  <button type="button" class="btn btn-primary activateModal" @click="modal.show()">Sign up for {{modalTournament.tournamentDescription}}</button>
+
   <div class="modal fade" ref="Component" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -13,13 +14,13 @@
           ></button>
         </div>
         <div class="modal-body">
-            <h5>Enter playername here:</h5><br>
-            <form>
-                <input type="text" v-model="userName">
-            </form><br>
-            <div>
-                <button class="btn btn-primary" v-on:click="AddUserToTournament">Sign up</button>
-            </div>
+          <h5>Enter playername here:</h5><br>
+          <form>
+            <input type="text" v-model="userName">
+          </form><br>
+          <div>
+            <button class="btn btn-primary" v-on:click="AddUserToTournament">Sign up</button>
+          </div>
         </div>
       </div>
     </div>

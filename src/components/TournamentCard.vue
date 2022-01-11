@@ -1,4 +1,24 @@
 <template>
+<div class="modal fade" ref="Component" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Notice:
+          </h5>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete:  {{ tournament.tournamentDescription }}</p>
+            <button class="btn btn-primary" v-on:click="DeleteTournament">
+                Yes, Delete this Tournament
+            </button>
+            <button class="btn btn-secondary" v-on:click="modal.hide()">
+                Cancel
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
     <div class="card wholecard">
         <div class="card-header"> 
             <div class="row">
@@ -7,7 +27,7 @@
                     <h6 class="card-subtitle mb-2 text-muted">Organised by: {{ this.tournament.tournamentOrganisor }}</h6>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-danger disabled" style="justify-content: right;">Delete Tournament</button>
+                    <button class="btn btn-danger" v-on:click="modal.show()" style="justify-content: right;">Delete Tournament</button>
                 </div>
             </div>
         </div>
@@ -25,6 +45,7 @@
 <script>
 import axios from 'axios'
 import JoinTournamentModal from './JoinTournamentModal.vue'
+import { Modal } from "bootstrap";
 
 export default {
     name: "TournamentCard",
@@ -33,6 +54,7 @@ export default {
     },
     data () {
         return {
+            modal: null,
             user: '',
             tournamentUsers: [],
             loaded: false,
@@ -44,6 +66,7 @@ export default {
         }
     },
     mounted() {
+        this.modal = new Modal(this.$refs.Component);
         this.GetTournamentPlayers();
     },
     methods: {
@@ -59,7 +82,10 @@ export default {
                 console.log(error)
             }
             this.loaded = true;
-        }
+        },
+        async DeleteTournament() {
+            
+        },
     },
 
 }

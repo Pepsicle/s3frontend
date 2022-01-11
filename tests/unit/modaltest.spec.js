@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import JoinTournamentModal from '@/components/JoinTournamentModal.vue'
+// import app from '../components/App.vue'
 
 describe('JoinTournamentModal.vue', () => {
   it('opens modal on click', () => {
@@ -19,3 +20,8 @@ describe('JoinTournamentModal.vue', () => {
     expect(wrapper.find('div.modal').text()).toContain(expectedDescription)
   })
 })
+
+// test('routing', () => {
+//   const wrapper = mount(app)
+//   expect(wrapper.html()).toContain('HomePage')
+// })

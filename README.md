@@ -12,10 +12,6 @@
 
 ### This application also allows for the creation of tournaments. You can sign on for a tournament and create them. They can also be deleted by admins although this project currently does not have any roles added.
 
-[Run Application](#Run-Application) -
-
-### Run Application
-
 ## Project setup
 ```
 npm install

@@ -1,5 +1,17 @@
 # s3frontend
 
+### Application summary
+
+## This application is a webapp to check several SMITE statistics. You can enter a playername and find stats such as:
+- General user information
+- User Clan
+- Hours played (ingame)
+- KDA per god
+- Worshippers per god
+- Winrate per god
+
+## This application also allows for the creation of tournaments. You can sign on for a tournament and create them. They can also be deleted by admins although this project currently does not have any roles added.
+
 [Run Application](#Run-Application) -
 
 ### Run Application
